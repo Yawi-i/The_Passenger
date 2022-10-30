@@ -28,7 +28,15 @@ public class Passenger {
     public int Name(){
         int length = passengerName.length();
         if (length < 3){
-            throw new IllegalArgumentException("Name should be more than 3 letters");
+            throw new IllegalArgumentException("Name should be 3 letters or more");
+        }
+        return length;
+    }
+
+    public int ID(){
+        int length = passengerID.length();
+        if (length < 10){
+            throw new IllegalArgumentException("ID should be more than 10 characters");
         }
         return length;
     }
