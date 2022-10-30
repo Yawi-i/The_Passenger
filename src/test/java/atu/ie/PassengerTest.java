@@ -30,29 +30,44 @@ class PassengerTest {
     }
 
     @Test
-    void TestPassengerTitleMrs() {
+    void TestTitleMrs() {
         myPassenger = new Passenger("Mrs", "name", "id", "0123456789", 0);
         assertEquals("Mrs",myPassenger.Title(), "Passenger title must be either Mrs, Mr or Ms");
     }
 
     @Test
-    void TestPassengerTitleMr() {
+    void TestTitleMr() {
         myPassenger = new Passenger("Mr", "name", "id", "0123456789", 0);
         assertEquals("Mr",myPassenger.Title(), "Passenger title must be either Mrs, Mr or Ms");
     }
 
     @Test
-    void TestPassengerTitleMs() {
+    void TestrTitleMs() {
         myPassenger = new Passenger("Ms", "name", "id", "0123456789", 0);
         assertEquals("Ms",myPassenger.Title(), "Passenger title must be either Mrs, Mr or Ms");
     }
 
     @Test
-    void TestPassengerTitleFail() {
+    void TestTitleFail() {
         myPassenger = new Passenger("Sir", "name", "id", "0123456789", 0);
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     myPassenger.Title();
+                });
+    }
+
+    @Test
+    void TestNameLength(){
+        myPassenger = new Passenger("title", "Joe", "id", "0123456789", 0);
+        assertTrue(myPassenger.Name() >= 3,"Name should be more than 3 letters");
+    }
+
+    @Test
+    void TestNameLengthFail() {
+        myPassenger = new Passenger("tile", "Jo", "id", "0123456789", 0);
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    myPassenger.Name();
                 });
     }
 
