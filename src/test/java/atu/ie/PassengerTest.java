@@ -59,7 +59,7 @@ class PassengerTest {
     @Test
     void TestNameLength(){
         myPassenger = new Passenger("title", "Joe", "id", "0123456789", 0);
-        assertTrue(myPassenger.Name() >= 3,"Name should be more than 3 letters");
+        assertTrue(myPassenger.Name() >= 3,"Name should be 3 letters or more");
     }
 
     @Test
@@ -70,6 +70,20 @@ class PassengerTest {
                     myPassenger.Name();
                 });
     }
+
+    @Test
+    void TestIDLength(){
+        myPassenger = new Passenger("title", "name", "FR54684M84", "0123456789", 0);
+        assertTrue(myPassenger.ID() >= 10,"ID should be more than 10 characters");
+    }
+
+    @Test
+    void TestIDLengthFail(){
+        myPassenger = new Passenger("title", "name", "FR7899F1", "0123456789", 0);
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    myPassenger.ID();
+                });    }
 
     @AfterEach
     void tearDown() {
