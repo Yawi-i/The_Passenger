@@ -1,7 +1,5 @@
 package atu.ie;
 
-//import java.util.Scanner;
-
 public class Passenger {
     String passengerTitle, passengerName, passengerID,passengerPhone;   int passengerAge;
 
@@ -26,4 +24,13 @@ public class Passenger {
         }
         return passengerTitle;
     }
+
+    public int Name(){
+        int length = passengerName.length();
+        if (length < 3){
+            throw new IllegalArgumentException("Name should be more than 3 letters");
+        }
+        return length;
+    }
+
 }
