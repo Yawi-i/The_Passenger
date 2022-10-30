@@ -12,13 +12,20 @@ class PassengerTest {
 
     @BeforeEach
     void setUp() {
-
     }
 
     @Test
-    void TestAge(){
-        myPassenger = new Passenger("title","name","id", "12345678",18);
-        assertEquals(18,myPassenger.Age(),"Age must be over 16");
+    void TestAgePass(){
+        myPassenger = new Passenger("title","name","id", "0123456789",16);
+        assertTrue(myPassenger.Age() >= 16,"Age must be over 16");
+    }
+    @Test
+    void TestAgeFail(){
+        myPassenger = new Passenger("title","name","id", "0123456789",15);
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    myPassenger.Age();
+                });
     }
     @AfterEach
     void tearDown() {

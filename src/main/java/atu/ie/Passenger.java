@@ -3,22 +3,16 @@ package atu.ie;
 import java.util.Scanner;
 
 public class Passenger {
-    String Title, passName, passID;
-    int passPhone, passAge;
+    String passengerTitle, passengerName, passengerID,passengerPhone;   int passengerAge;
 
-    public Passenger(String title,String name,String id,String phone,int age){
-        passAge = age;
+    public Passenger(String title,String name,String id,String phone,int age){      //Constructor
+        passengerAge = age;
 
     }
-
     public int Age(){
-
-        System.out.println("Age: ");
-        Scanner inputs = new Scanner(System.in);
-        int age = inputs.nextInt();
-
-        System.out.println("Age is :" +age);
-
-        return age;
+        if (passengerAge < 16){
+            throw new IllegalArgumentException("Age must be over 16");
+        }
+        return passengerAge;
     }
 }
