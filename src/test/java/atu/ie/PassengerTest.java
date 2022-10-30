@@ -74,7 +74,7 @@ class PassengerTest {
     @Test
     void TestIDLength(){
         myPassenger = new Passenger("title", "name", "FR54684M84", "0123456789", 0);
-        assertTrue(myPassenger.ID() >= 10,"ID should be more than 10 characters");
+        assertTrue(myPassenger.ID() >= 10,"ID should be 10 characters or more");
     }
 
     @Test
@@ -83,7 +83,23 @@ class PassengerTest {
         assertThrows(IllegalArgumentException.class,
                 () -> {
                     myPassenger.ID();
-                });    }
+                });
+    }
+
+    @Test
+    void TestPhoneLength(){
+        myPassenger = new Passenger("title", "name", "ID", "0123456", 0);
+        assertTrue(myPassenger.Phone() >= 7,"Phone should be 7 characters or more");
+    }
+
+    @Test
+    void TestPhoneLengthFail(){
+        myPassenger = new Passenger("title", "name", "ID", "012345", 0);
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    myPassenger.Phone();
+                });
+    }
 
     @AfterEach
     void tearDown() {

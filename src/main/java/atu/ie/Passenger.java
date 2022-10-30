@@ -36,7 +36,15 @@ public class Passenger {
     public int ID(){
         int length = passengerID.length();
         if (length < 10){
-            throw new IllegalArgumentException("ID should be more than 10 characters");
+            throw new IllegalArgumentException("ID should be 10 characters or more");
+        }
+        return length;
+    }
+
+    public int Phone(){
+        int length = passengerPhone.length();
+        if (length < 7){
+            throw new IllegalArgumentException("Phone should be 7 characters or more");
         }
         return length;
     }
